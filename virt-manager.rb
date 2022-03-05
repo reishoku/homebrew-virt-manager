@@ -3,8 +3,8 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz"
-  sha256 "2b6fe3d90d89e1130227e4b05c51e6642d89c839d3ea063e0e29475fd9bf7b86"
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-4.0.0.tar.gz"
+  sha256 "515aaa2021a4bf352b0573098fe6958319b1ba8ec508ea37e064803f97f17086"
   revision 3
 
   depends_on "intltool" => :build
@@ -28,8 +28,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-7.10.0.tar.gz"
-    sha256 "267774bbdf99d47515274542880499437dc94ae291771f5663c62020a62da975"
+    url "https://libvirt.org/sources/python/libvirt-python-8.0.0.tar.gz"
+    sha256 "0245c226d7b83b32449299d0ca5f1f250dcc07edf9f2fcd87cb7462f09e4c026"
   end
 
   resource "idna" do
@@ -53,13 +53,15 @@ class VirtManager < Formula
   end
 
   # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
-  patch :DATA
+  # patch :DATA
 
   def install
     venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
 
     # virt-manager uses distutils, doesn't like --single-version-externally-managed
+    system "#{libexec}/bin/python", "-m", "pip",
+                      "install", "chardet"
     system "#{libexec}/bin/python", "setup.py",
                      "configure",
                      "--prefix=#{libexec}"
