@@ -52,6 +52,11 @@ class VirtManager < Formula
     sha256 "68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"
   end
 
+  resource "chardet" do
+    url "https://pypi.io/packages/source/c/chardet/chardet-4.0.0.tar.gz"
+    sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
+  end
+
   # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
   # patch :DATA
 
@@ -59,9 +64,6 @@ class VirtManager < Formula
     venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
 
-    # virt-manager uses distutils, doesn't like --single-version-externally-managed
-    system "#{libexec}/bin/python", "-m", "pip",
-                      "install", "chardet"
     system "#{libexec}/bin/python", "setup.py",
                      "configure",
                      "--prefix=#{libexec}"
