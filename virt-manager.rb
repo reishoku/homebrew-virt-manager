@@ -30,8 +30,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-8.1.0.tar.gz"
-    sha256 "a21ecfab6d29ac1bdd1bfd4aa3ef58447f9f70919aefecd03774613f65914e43"
+    url "https://libvirt.org/sources/python/libvirt-python-8.2.0.tar.gz"
+    sha256 "f8b8cea67ff0d64d63029cc3410a4656e04ee9f26837a856bc0c287da55d053a"
   end
 
   resource "idna" do
@@ -45,8 +45,8 @@ class VirtManager < Formula
   end
 
   resource "urllib3" do
-    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.26.7.tar.gz"
-    sha256 "4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"
+    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.26.9.tar.gz"
+    sha256 "aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e"
   end
 
   resource "requests" do
