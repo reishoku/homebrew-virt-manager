@@ -30,8 +30,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-8.2.0.tar.gz"
-    sha256 "f8b8cea67ff0d64d63029cc3410a4656e04ee9f26837a856bc0c287da55d053a"
+    url "https://libvirt.org/sources/python/libvirt-python-8.3.0.tar.gz"
+    sha256 "be229b9ad1d48be7007e7bf341fc990c65e24aea624c16db6b36d02c820df5eb"
   end
 
   resource "idna" do
@@ -58,9 +58,6 @@ class VirtManager < Formula
     url "https://pypi.io/packages/source/c/chardet/chardet-4.0.0.tar.gz"
     sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
   end
-
-  # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
-  # patch :DATA
 
   def install
     venv = virtualenv_create(libexec, "python3")
